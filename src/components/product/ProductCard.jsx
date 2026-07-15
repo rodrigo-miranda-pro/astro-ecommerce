@@ -53,6 +53,7 @@ export default function ProductCard({ product }) {
                 ? 'bg-green-500 text-white'
                 : 'bg-[#00754a] text-white hover:bg-[#1e3932]'
             }`}
+            aria-label={added ? 'Producto agregado al carrito' : `Agregar ${product.name} al carrito`}
           >
             {added ? '¡Agregado!' : 'Agregar'}
           </button>

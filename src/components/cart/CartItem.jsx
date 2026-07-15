@@ -21,13 +21,15 @@ export default function CartItem({ item }) {
             <button
               onClick={() => updateQuantity(item.id, item.quantity - 1)}
               class="w-7 h-7 flex items-center justify-center text-gray-500 hover:text-[#00754a] transition-colors cursor-pointer text-lg leading-none"
+              aria-label={`Reducir cantidad de ${item.name}`}
             >
               -
             </button>
-            <span class="w-7 text-center text-sm font-medium">{item.quantity}</span>
+            <span class="w-7 text-center text-sm font-medium" aria-label={`${item.quantity} unidad${item.quantity !== 1 ? 'es' : ''}`}>{item.quantity}</span>
             <button
               onClick={() => updateQuantity(item.id, item.quantity + 1)}
               class="w-7 h-7 flex items-center justify-center text-gray-500 hover:text-[#00754a] transition-colors cursor-pointer text-lg leading-none"
+              aria-label={`Aumentar cantidad de ${item.name}`}
             >
               +
             </button>
@@ -35,6 +37,7 @@ export default function CartItem({ item }) {
           <button
             onClick={() => removeItem(item.id)}
             class="text-xs text-red-500 hover:text-red-600 transition-colors cursor-pointer"
+            aria-label={`Eliminar ${item.name} del carrito`}
           >
             Eliminar
           </button>

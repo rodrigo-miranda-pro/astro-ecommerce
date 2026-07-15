@@ -3,7 +3,8 @@ import Header from './Header.astro';
 import Footer from './Footer.astro';
 import '../../styles/global.css';
 
-const { title = 'Starbucks Panamá', description = 'Tu café favorito al alcance de un clic.' } = Astro.props;
+const { title = 'Starbucks Panamá', description = 'Tu café favorito al alcance de un clic.', image = '/og-default.png', url = Astro.url } = Astro.props;
+const canonicalURL = new URL(url?.pathname || '/', Astro.site).href;
 ---
 
 <!doctype html>
@@ -14,12 +15,62 @@ const { title = 'Starbucks Panamá', description = 'Tu café favorito al alcance
     <meta name="description" content={description} />
     <title>{title}</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="canonical" href={canonicalURL} />
+
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Starbucks Panamá" />
+    <meta property="og:image" content={new URL(image, Astro.site).href} />
+    <meta property="og:locale" content="es_PA" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(image, Astro.site).href} />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Starbucks Panamá",
+        "url": "https://starbuckspanama.com",
+        "logo": "https://starbuckspanama.com/favicon.svg",
+        "description": "Tu café favorito al alcance de un clic. Bebidas, comida y merchandising Starbucks.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Ciudad de Panamá",
+          "addressCountry": "PA"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+507 200-1234",
+          "contactType": "customer service",
+          "availableLanguage": "Spanish"
+        },
+        "sameAs": [
+          "https://www.instagram.com/starbuckspanama",
+          "https://www.facebook.com/starbuckspanama"
+        ]
+      }
+    </script>
   </head>
   <body class="min-h-screen flex flex-col bg-white">
+    <a href="#main-content" class="skip-link">
+      Saltar al contenido principal
+    </a>
     <Header />
-    <main class="flex-1">
+    <main id="main-content" class="flex-1">
       <slot />
     </main>
     <Footer />
+    <div
+      id="cart-live-region"
+      class="visually-hidden"
+      aria-live="polite"
+      aria-atomic="true"
+      role="status"
+    ></div>
   </body>
 </html>

@@ -35,6 +35,7 @@ export default function CartPage() {
           <button
             onClick={clearCart}
             class="text-sm text-red-500 hover:text-red-600 transition-colors cursor-pointer"
+            aria-label="Vaciar todos los productos del carrito"
           >
             Vaciar carrito
           </button>
@@ -84,7 +85,7 @@ export default function CartPage() {
             </div>
           )}
 
-          <button class="btn-primary w-full mt-6">
+          <button class="btn-primary w-full mt-6" aria-label="Proceder al pago del pedido">
             Proceder al pago
           </button>
 

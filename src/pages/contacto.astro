@@ -14,26 +14,35 @@ import Layout from '../components/layout/Layout.astro';
     <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
       <div>
         <h2 class="text-2xl font-bold text-[#1e3932] mb-6">Envíanos un mensaje</h2>
-        <form class="space-y-5">
+        <form class="space-y-5" novalidate>
           <div>
-            <label class="block text-sm font-medium text-gray-600 mb-1">Nombre completo</label>
+            <label for="contact-name" class="block text-sm font-medium text-gray-600 mb-1">Nombre completo</label>
             <input
               type="text"
+              id="contact-name"
+              name="name"
+              required
               placeholder="Tu nombre"
               class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#00754a]/30 focus:border-[#00754a] transition-all"
             />
           </div>
           <div>
-            <label class="block text-sm font-medium text-gray-600 mb-1">Correo electrónico</label>
+            <label for="contact-email" class="block text-sm font-medium text-gray-600 mb-1">Correo electrónico</label>
             <input
               type="email"
+              id="contact-email"
+              name="email"
+              required
               placeholder="tu@email.com"
               class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#00754a]/30 focus:border-[#00754a] transition-all"
             />
           </div>
           <div>
-            <label class="block text-sm font-medium text-gray-600 mb-1">Asunto</label>
-            <select class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#00754a]/30 focus:border-[#00754a] transition-all appearance-none bg-white">
+            <label for="contact-subject" class="block text-sm font-medium text-gray-600 mb-1">Asunto</label>
+            <select
+              id="contact-subject"
+              name="subject"
+              class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#00754a]/30 focus:border-[#00754a] transition-all appearance-none bg-white">
               <option value="">Selecciona un asunto</option>
               <option value="pedido">Consulta sobre pedido</option>
               <option value="producto">Información de producto</option>
@@ -42,9 +51,12 @@ import Layout from '../components/layout/Layout.astro';
             </select>
           </div>
           <div>
-            <label class="block text-sm font-medium text-gray-600 mb-1">Mensaje</label>
+            <label for="contact-message" class="block text-sm font-medium text-gray-600 mb-1">Mensaje</label>
             <textarea
+              id="contact-message"
+              name="message"
               rows="5"
+              required
               placeholder="Escribe tu mensaje aquí..."
               class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#00754a]/30 focus:border-[#00754a] transition-all resize-none"
             ></textarea>

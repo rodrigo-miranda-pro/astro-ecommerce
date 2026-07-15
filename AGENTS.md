@@ -22,6 +22,8 @@ Manage it with `astro dev stop`, `astro dev status`, and `astro dev logs`.
 
 - **Do NOT install `@astrojs/tailwind`** — it is incompatible with Astro 7. Tailwind is configured as a Vite plugin in `astro.config.mjs` using `@tailwindcss/vite`.
 - Zustand needs `react` aliased to `@preact/compat`. The `package.json` declares `"react": "npm:@preact/compat@^18.3.2"`.
+- **`site` config** in `astro.config.mjs` (`https://starbuckspanama.com`) powers sitemap, canonical URLs, and OG image resolution. The `@astrojs/sitemap` integration auto-generates `sitemap-index.xml` on build. Node >= 22.12.0 required.
+- **No test, lint, or typecheck scripts.** Only `npm run dev`, `npm run build`, and `npm run preview`.
 
 ## Conventions
 
@@ -31,6 +33,16 @@ Manage it with `astro dev stop`, `astro dev status`, and `astro dev logs`.
 - **Preact components:** `export default function Component({ prop })` — import hooks from `preact/hooks`.
 - **Astro pages:** import data in frontmatter, pass to Preact components as props with `client:load`.
 - **No comments** unless explicitly requested.
+- **Typography:** **Outfit** from Google Fonts (loaded via `@import` in `global.css`). Headings use `font-weight: 700` and `letter-spacing: -0.02em`.
+- **Animation utilities:** `animate-fade-in` and `animate-fade-in-up` available in `global.css`. Both respect `prefers-reduced-motion`.
+
+## SEO & accessibility
+
+- **Layout** injects: OG/Twitter Card tags, canonical URL, `Organization` JSON-LD, skip link (targets `#main-content`), and a cart `aria-live` region (`#cart-live-region`).
+- **Product pages** inject: `Product` + `BreadcrumbList` JSON-LD. New product-like pages should follow this pattern.
+- **All Preact components** use `aria-label` on buttons, `aria-pressed` on toggles, and semantic `role` attributes. Maintain this standard.
+- Utility class `visually-hidden` is available for screen-reader-only content.
+- `:focus-visible` and `prefers-reduced-motion` are configured globally in `global.css`.
 
 ## Architecture
 

@@ -10,8 +10,8 @@ export default function CartDrawer({ isOpen, onClose }) {
   if (!isOpen) return null;
 
   return (
-    <div class="fixed inset-0 z-[100]">
-      <div class="absolute inset-0 bg-black/50" onClick={onClose} />
+    <div class="fixed inset-0 z-[100]" role="dialog" aria-modal="true" aria-label="Carrito de compras">
+      <div class="absolute inset-0 bg-black/50" onClick={onClose} aria-hidden="true" />
 
       <div class="absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-xl flex flex-col">
         <div class="flex items-center justify-between p-4 border-b">
@@ -68,6 +68,7 @@ export default function CartDrawer({ isOpen, onClose }) {
             <button
               onClick={clearCart}
               class="block w-full text-center text-sm text-red-500 hover:text-red-600 transition-colors cursor-pointer"
+              aria-label="Vaciar todos los productos del carrito"
             >
               Vaciar carrito
             </button>

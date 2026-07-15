@@ -1,4 +1,4 @@
-<footer class="bg-[#1e3932] text-white mt-auto">
+<footer class="bg-[#1e3932] text-white mt-auto" role="contentinfo">
   <div class="container-page py-12">
     <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
       <div>
@@ -8,7 +8,7 @@
         </p>
       </div>
 
-      <div>
+      <nav aria-label="Enlaces rápidos">
         <h4 class="font-semibold mb-3 text-[#cba258]">Enlaces Rápidos</h4>
         <ul class="space-y-2 text-sm text-gray-300">
           <li><a href="/" class="hover:text-white transition-colors no-underline">Inicio</a></li>
@@ -16,9 +16,9 @@
           <li><a href="/nosotros" class="hover:text-white transition-colors no-underline">Nosotros</a></li>
           <li><a href="/contacto" class="hover:text-white transition-colors no-underline">Contacto</a></li>
         </ul>
-      </div>
+      </nav>
 
-      <div>
+      <nav aria-label="Categorías de productos">
         <h4 class="font-semibold mb-3 text-[#cba258]">Categorías</h4>
         <ul class="space-y-2 text-sm text-gray-300">
           <li><a href="/productos?categoria=bebidas-calientes" class="hover:text-white transition-colors no-underline">Bebidas Calientes</a></li>
@@ -26,15 +26,17 @@
           <li><a href="/productos?categoria=comida" class="hover:text-white transition-colors no-underline">Comida</a></li>
           <li><a href="/productos?categoria=merchandising" class="hover:text-white transition-colors no-underline">Merchandising</a></li>
         </ul>
-      </div>
+      </nav>
 
       <div>
         <h4 class="font-semibold mb-3 text-[#cba258]">Contacto</h4>
-        <ul class="space-y-2 text-sm text-gray-300">
-          <li>Ciudad de Panamá, Panamá</li>
-          <li>info@starbuckspanama.com</li>
-          <li>+507 200-1234</li>
-        </ul>
+        <address class="not-italic">
+          <ul class="space-y-2 text-sm text-gray-300">
+            <li>Ciudad de Panamá, Panamá</li>
+            <li><a href="mailto:info@starbuckspanama.com" class="hover:text-white transition-colors no-underline">info@starbuckspanama.com</a></li>
+            <li><a href="tel:+5072001234" class="hover:text-white transition-colors no-underline">+507 200-1234</a></li>
+          </ul>
+        </address>
       </div>
     </div>
 

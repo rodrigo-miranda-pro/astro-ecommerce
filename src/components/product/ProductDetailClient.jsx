@@ -53,7 +53,7 @@ export default function ProductDetailClient({ product }) {
         )}
 
         <div class="flex items-center gap-4 mt-8">
-          <QuantitySelector quantity={quantity} onChange={setQuantity} />
+          <QuantitySelector quantity={quantity} onChange={setQuantity} label="unidades del producto" />
           <button
             onClick={handleAdd}
             class={`flex-1 py-3 rounded-full font-semibold text-sm transition-all cursor-pointer ${
@@ -61,6 +61,7 @@ export default function ProductDetailClient({ product }) {
                 ? 'bg-green-500 text-white'
                 : 'bg-[#00754a] text-white hover:bg-[#1e3932]'
             }`}
+            aria-label={added ? 'Producto agregado al carrito' : `Agregar ${product.name} al carrito`}
           >
             {added ? '¡Agregado al carrito!' : 'Agregar al carrito'}
           </button>
