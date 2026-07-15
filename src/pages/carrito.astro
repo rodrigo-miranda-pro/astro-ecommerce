@@ -1,0 +1,13 @@
+---
+import Layout from '../components/layout/Layout.astro';
+import CartPage from '../components/cart/CartPage.jsx';
+---
+
+<Layout title="Carrito | Starbucks Panamá" description="Revisa tu pedido y completa tu compra.">
+  <section class="container-page py-12">
+    <h1 class="text-3xl md:text-4xl font-bold text-[#1e3932] text-center mb-8">
+      Tu Carrito
+    </h1>
+    <CartPage client:load />
+  </section>
+</Layout>

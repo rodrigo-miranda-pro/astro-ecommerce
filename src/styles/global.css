@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-starbucks: #00754a;
+    --color-starbucks-dark: #1e3932;
+    --color-starbucks-light: #d4e9e2;
+    --color-accent: #cba258;
+    --color-accent-light: #f2f0eb;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #1e3932;
+    background-color: #ffffff;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-[#00754a] text-white px-6 py-3 rounded-full font-semibold hover:bg-[#1e3932] transition-colors cursor-pointer;
+  }
+
+  .btn-secondary {
+    @apply border-2 border-[#00754a] text-[#00754a] px-6 py-3 rounded-full font-semibold hover:bg-[#00754a] hover:text-white transition-colors cursor-pointer;
+  }
+
+  .btn-accent {
+    @apply bg-[#cba258] text-white px-6 py-3 rounded-full font-semibold hover:bg-[#b89248] transition-colors cursor-pointer;
+  }
+
+  .container-page {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold text-center text-[#1e3932] mb-2;
+  }
+
+  .section-subtitle {
+    @apply text-gray-500 text-center mb-10 text-lg;
+  }
+}

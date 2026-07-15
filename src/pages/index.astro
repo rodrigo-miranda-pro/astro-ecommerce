@@ -1,17 +1,131 @@
 ---
+import Layout from '../components/layout/Layout.astro';
+import ProductCard from '../components/product/ProductCard';
+import { getFeaturedProducts, getCategories } from '../data/products.js';
 
+const featuredProducts = getFeaturedProducts();
+const categories = getCategories().filter(c => c.slug !== 'todas');
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Starbucks Panamá | Tu café favorito" description="Disfruta de la experiencia Starbucks desde la comodidad de tu hogar. Bebidas, comida y merchandising al alcance de un clic.">
+  <section class="relative bg-gradient-to-br from-[#1e3932] to-[#00754a] text-white overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute -top-20 -right-20 w-96 h-96 rounded-full bg-white/20" />
+      <div class="absolute -bottom-20 -left-20 w-80 h-80 rounded-full bg-[#cba258]/30" />
+    </div>
+    <div class="container-page relative py-20 md:py-32">
+      <div class="max-w-2xl">
+        <h1 class="text-4xl md:text-6xl font-bold leading-tight">
+          El mejor café
+          <span class="block text-[#cba258]">ahora en tu hogar</span>
+        </h1>
+        <p class="mt-6 text-lg text-gray-200 leading-relaxed max-w-lg">
+          Disfruta de tus bebidas favoritas de Starbucks sin salir de casa. Pedidos rápidos, frescos y con la calidad de siempre.
+        </p>
+        <div class="flex flex-wrap gap-4 mt-8">
+          <a href="/productos" class="btn-accent inline-block no-underline">
+            Ver productos
+          </a>
+          <a href="/contacto" class="btn-secondary inline-block no-underline border-white text-white hover:bg-white hover:text-[#1e3932]">
+            Contáctanos
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container-page py-16">
+    <h2 class="section-title">Categorías</h2>
+    <p class="section-subtitle">Explora nuestra variedad de productos</p>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      {categories.map((cat) => (
+        <a
+          href={`/productos?categoria=${cat.slug}`}
+          class="group relative bg-[#f2f0eb] rounded-2xl p-6 text-center hover:bg-[#00754a] transition-all duration-300 no-underline overflow-hidden"
+        >
+          <span class="block text-4xl mb-3 group-hover:scale-110 transition-transform duration-300">
+            {cat.slug === 'bebidas-calientes' && '☕'}
+            {cat.slug === 'bebidas-frias' && '🧋'}
+            {cat.slug === 'comida' && '🥐'}
+            {cat.slug === 'granos-y-tazas' && '🫘'}
+            {cat.slug === 'merchandising' && '♻️'}
+          </span>
+          <span class="font-semibold text-[#1e3932] group-hover:text-white transition-colors">
+            {cat.name}
+          </span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="bg-[#f2f0eb] py-16">
+    <div class="container-page">
+      <h2 class="section-title">Productos Destacados</h2>
+      <p class="section-subtitle">Los favoritos de nuestros clientes</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {featuredProducts.map((product) => (
+          <ProductCard product={product} client:load />
+        ))}
+      </div>
+      <div class="text-center mt-10">
+        <a href="/productos" class="btn-primary inline-block no-underline">
+          Ver todos los productos
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="container-page py-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+      <div>
+        <span class="text-[#00754a] font-semibold text-sm uppercase tracking-wider">
+          Entrega a domicilio
+        </span>
+        <h2 class="text-3xl md:text-4xl font-bold text-[#1e3932] mt-2 leading-tight">
+          Café fresco hasta tu puerta
+        </h2>
+        <p class="mt-4 text-gray-500 leading-relaxed">
+          Pedí tus bebidas y comida favorita y te la llevamos calientita hasta donde estés. Cobertura en Ciudad de Panamá y áreas cercanas.
+        </p>
+        <ul class="mt-6 space-y-3">
+          <li class="flex items-center gap-3 text-gray-600">
+            <span class="w-6 h-6 rounded-full bg-[#00754a]/10 text-[#00754a] flex items-center justify-center text-sm">✓</span>
+            Entrega en 30-45 minutos
+          </li>
+          <li class="flex items-center gap-3 text-gray-600">
+            <span class="w-6 h-6 rounded-full bg-[#00754a]/10 text-[#00754a] flex items-center justify-center text-sm">✓</span>
+            Empaque térmico incluido
+          </li>
+          <li class="flex items-center gap-3 text-gray-600">
+            <span class="w-6 h-6 rounded-full bg-[#00754a]/10 text-[#00754a] flex items-center justify-center text-sm">✓</span>
+            Seguimiento en tiempo real
+          </li>
+        </ul>
+      </div>
+      <div class="relative">
+        <img
+          src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=600&h=600&fit=crop"
+          alt="Café Starbucks en delivery"
+          class="rounded-3xl w-full shadow-lg"
+          loading="lazy"
+        />
+        <div class="absolute -bottom-4 -left-4 bg-[#cba258] text-white p-4 rounded-2xl shadow-lg">
+          <p class="text-xs opacity-80">Envío gratis</p>
+          <p class="text-2xl font-bold">+B/.20</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-gradient-to-r from-[#00754a] to-[#1e3932] text-white py-16">
+    <div class="container-page text-center">
+      <h2 class="text-3xl md:text-4xl font-bold">¿Listo para tu café?</h2>
+      <p class="mt-4 text-green-100 max-w-xl mx-auto">
+        Descargá la app de Starbucks Panamá y ganá estrellas con cada compra. Canjealas por bebidas y productos gratis.
+      </p>
+      <a href="/productos" class="btn-accent inline-block mt-8 no-underline">
+        Hacer pedido ahora
+      </a>
+    </div>
+  </section>
+</Layout>

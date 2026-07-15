@@ -1,0 +1,68 @@
+---
+import Layout from '../../components/layout/Layout.astro';
+import ProductDetailClient from '../../components/product/ProductDetailClient.jsx';
+import { getProductBySlug, getAllProducts } from '../../data/products.js';
+
+export function getStaticPaths() {
+  const products = getAllProducts();
+  return products.map((product) => ({
+    params: { slug: product.slug },
+  }));
+}
+
+const { slug } = Astro.params;
+const product = getProductBySlug(slug);
+
+if (!product) {
+  return Astro.redirect('/productos');
+}
+
+const relatedProducts = getAllProducts()
+  .filter((p) => p.category === product.category && p.id !== product.id)
+  .slice(0, 4);
+---
+
+<Layout title={`${product.name} | Starbucks Panamá`} description={product.description}>
+  <section class="container-page py-8">
+    <nav class="text-sm text-gray-400 mb-6">
+      <a href="/" class="hover:text-[#00754a] no-underline">Inicio</a>
+      <span class="mx-2">/</span>
+      <a href="/productos" class="hover:text-[#00754a] no-underline">Productos</a>
+      <span class="mx-2">/</span>
+      <span class="text-[#1e3932]">{product.name}</span>
+    </nav>
+
+    <ProductDetailClient product={product} client:load />
+
+    {relatedProducts.length > 0 && (
+      <div class="mt-16">
+        <h2 class="text-2xl font-bold text-[#1e3932] mb-6">También te puede interesar</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {relatedProducts.map((rp) => (
+            <a
+              href={`/productos/${rp.slug}`}
+              class="group bg-white rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden border border-gray-100 no-underline"
+            >
+              <div class="aspect-square overflow-hidden">
+                <img
+                  src={rp.image}
+                  alt={rp.name}
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+              </div>
+              <div class="p-3">
+                <h3 class="font-semibold text-[#1e3932] text-sm group-hover:text-[#00754a] transition-colors">
+                  {rp.name}
+                </h3>
+                <p class="text-[#00754a] font-bold text-sm mt-1">
+                  B/. {rp.price.toFixed(2)}
+                </p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    )}
+  </section>
+</Layout>

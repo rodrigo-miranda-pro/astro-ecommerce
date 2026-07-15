@@ -1,0 +1,29 @@
+---
+import Layout from '../../components/layout/Layout.astro';
+import CatalogClient from '../../components/product/CatalogClient.jsx';
+import { getAllProducts, getCategories } from '../../data/products.js';
+
+const products = getAllProducts();
+const categories = getCategories();
+---
+
+<Layout title="Productos | Starbucks Panamá" description="Explora nuestro catálogo completo de bebidas, comida y productos Starbucks.">
+  <section class="bg-[#f2f0eb] py-12">
+    <div class="container-page">
+      <h1 class="text-3xl md:text-4xl font-bold text-[#1e3932] text-center">
+        Nuestro Catálogo
+      </h1>
+      <p class="text-gray-500 text-center mt-2">
+        {products.length} productos disponibles para ti
+      </p>
+    </div>
+  </section>
+
+  <section class="container-page py-12">
+    <CatalogClient
+      products={products}
+      categories={categories}
+      client:load
+    />
+  </section>
+</Layout>

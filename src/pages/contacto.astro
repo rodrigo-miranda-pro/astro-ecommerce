@@ -1,0 +1,89 @@
+---
+import Layout from '../components/layout/Layout.astro';
+---
+
+<Layout title="Contacto | Starbucks Panamá" description="Contáctanos. Encuentra nuestras sucursales en Panamá.">
+  <section class="bg-[#f2f0eb] py-12">
+    <div class="container-page text-center">
+      <h1 class="text-3xl md:text-4xl font-bold text-[#1e3932]">Contáctanos</h1>
+      <p class="text-gray-500 mt-2">Estamos aquí para ayudarte</p>
+    </div>
+  </section>
+
+  <section class="container-page py-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+      <div>
+        <h2 class="text-2xl font-bold text-[#1e3932] mb-6">Envíanos un mensaje</h2>
+        <form class="space-y-5">
+          <div>
+            <label class="block text-sm font-medium text-gray-600 mb-1">Nombre completo</label>
+            <input
+              type="text"
+              placeholder="Tu nombre"
+              class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#00754a]/30 focus:border-[#00754a] transition-all"
+            />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-600 mb-1">Correo electrónico</label>
+            <input
+              type="email"
+              placeholder="tu@email.com"
+              class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#00754a]/30 focus:border-[#00754a] transition-all"
+            />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-600 mb-1">Asunto</label>
+            <select class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#00754a]/30 focus:border-[#00754a] transition-all appearance-none bg-white">
+              <option value="">Selecciona un asunto</option>
+              <option value="pedido">Consulta sobre pedido</option>
+              <option value="producto">Información de producto</option>
+              <option value="entrega">Problemas con entrega</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-600 mb-1">Mensaje</label>
+            <textarea
+              rows="5"
+              placeholder="Escribe tu mensaje aquí..."
+              class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#00754a]/30 focus:border-[#00754a] transition-all resize-none"
+            ></textarea>
+          </div>
+          <button type="submit" class="btn-primary w-full">
+            Enviar mensaje
+          </button>
+        </form>
+      </div>
+
+      <div>
+        <h2 class="text-2xl font-bold text-[#1e3932] mb-6">Nuestras Sucursales</h2>
+        <div class="space-y-6">
+          <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+            <h3 class="font-semibold text-[#00754a] text-lg">Multiplaza Pacific</h3>
+            <p class="text-gray-500 text-sm mt-1">Vía Israel, Local #45, Ciudad de Panamá</p>
+            <p class="text-gray-500 text-sm">Lun-Sáb: 7:00 AM - 9:00 PM | Dom: 8:00 AM - 8:00 PM</p>
+            <p class="text-gray-500 text-sm mt-1">+507 200-1111</p>
+          </div>
+          <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+            <h3 class="font-semibold text-[#00754a] text-lg">Calle 50</h3>
+            <p class="text-gray-500 text-sm mt-1">Calle 50, Edificio Global Bank, Ciudad de Panamá</p>
+            <p class="text-gray-500 text-sm">Lun-Vie: 6:30 AM - 8:00 PM | Sáb: 7:30 AM - 7:00 PM</p>
+            <p class="text-gray-500 text-sm mt-1">+507 200-2222</p>
+          </div>
+          <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+            <h3 class="font-semibold text-[#00754a] text-lg">Costa del Este</h3>
+            <p class="text-gray-500 text-sm mt-1">Centro Comercial Town Center, Local #5, Costa del Este</p>
+            <p class="text-gray-500 text-sm">Lun-Dom: 7:00 AM - 10:00 PM</p>
+            <p class="text-gray-500 text-sm mt-1">+507 200-3333</p>
+          </div>
+          <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+            <h3 class="font-semibold text-[#00754a] text-lg">Albrook Mall</h3>
+            <p class="text-gray-500 text-sm mt-1">Centro Comercial Albrook, Nivel 2, Kiosco S-12</p>
+            <p class="text-gray-500 text-sm">Lun-Sáb: 10:00 AM - 8:00 PM | Dom: 10:00 AM - 7:00 PM</p>
+            <p class="text-gray-500 text-sm mt-1">+507 200-4444</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
